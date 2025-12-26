@@ -1,0 +1,1 @@
+def vpcs(s): return s.client('ec2').describe_vpcs()['Vpcs']

@@ -1,0 +1,1 @@
+def tgws(s): return s.client('ec2').describe_transit_gateways()['TransitGateways']

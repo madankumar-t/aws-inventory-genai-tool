@@ -1,0 +1,1 @@
+def nat_gateways(s): return s.client('ec2').describe_nat_gateways()['NatGateways']

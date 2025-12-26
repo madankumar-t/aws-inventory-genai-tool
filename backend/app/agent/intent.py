@@ -1,0 +1,2 @@
+def extract_intent(p):
+ s=[x for x in ['ec2','vpc','s3','iam','rds','eks'] if x in p.lower()];r=[x for x in ['us-east-1','us-west-2','eu-west-1'] if x in p];return {'services':s or ['vpc'],'regions':r or None}

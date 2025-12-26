@@ -1,0 +1,1 @@
+def collect(s): return {'roles':s.client('iam').list_roles()['Roles']}

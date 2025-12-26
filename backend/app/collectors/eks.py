@@ -1,0 +1,1 @@
+def collect(s): return {'clusters':s.client('eks').list_clusters()['clusters']}

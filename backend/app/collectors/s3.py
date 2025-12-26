@@ -1,0 +1,1 @@
+def collect(s): return {'buckets':s.client('s3').list_buckets()['Buckets']}

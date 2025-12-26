@@ -1,0 +1,1 @@
+def summarize(d): return {a:{r:{s:{k:len(v) for k,v in res.items()} for s,res in sv.items()} for r,sv in regs.items()} for a,regs in d.items()}

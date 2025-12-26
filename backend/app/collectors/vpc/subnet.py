@@ -1,0 +1,1 @@
+def subnets(s): return s.client('ec2').describe_subnets()['Subnets']

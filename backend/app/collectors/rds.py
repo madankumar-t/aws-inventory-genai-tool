@@ -1,0 +1,1 @@
+def collect(s): return {'instances':s.client('rds').describe_db_instances()['DBInstances']}

@@ -1,0 +1,16 @@
+Transform: AWS::Serverless-2016-10-31
+Resources:
+ CloudAIAgent:
+  Type: AWS::Serverless::Function
+  Properties:
+   Handler: app.lambda_handler.handler
+   Runtime: python3.11
+   Timeout: 900
+   MemorySize: 1024
+   Policies:
+    - Statement:
+       - Effect: Allow
+         Action:
+          - sts:AssumeRole
+          - organizations:ListAccounts
+         Resource: '*'

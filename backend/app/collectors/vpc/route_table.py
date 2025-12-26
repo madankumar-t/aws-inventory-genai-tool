@@ -1,0 +1,1 @@
+def route_tables(s): return s.client('ec2').describe_route_tables()['RouteTables']

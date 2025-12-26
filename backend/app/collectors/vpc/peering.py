@@ -1,0 +1,1 @@
+def peerings(s): return s.client('ec2').describe_vpc_peering_connections()['VpcPeeringConnections']

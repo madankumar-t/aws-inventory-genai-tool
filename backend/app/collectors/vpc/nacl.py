@@ -1,0 +1,1 @@
+def nacls(s): return s.client('ec2').describe_network_acls()['NetworkAcls']

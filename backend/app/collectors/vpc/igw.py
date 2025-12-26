@@ -1,0 +1,1 @@
+def igws(s): return s.client('ec2').describe_internet_gateways()['InternetGateways']

@@ -1,0 +1,1 @@
+def endpoints(s): return s.client('ec2').describe_vpc_endpoints()['VpcEndpoints']
