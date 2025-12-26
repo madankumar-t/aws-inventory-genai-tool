@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Backend execution role for AWS Cloud AI Agent (Lambda)
+
+Resources:
+  BackendExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: BackendExecutionRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+      Policies:
+        - PolicyName: BackendAssumeOrgReadOnly
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - sts:AssumeRole
+                Resource:
+                  - arn:aws:iam::*:role/OrgReadOnlyAI
+
+              - Effect: Allow
+                Action:
+                  - organizations:ListAccounts
+                Resource: "*"
+
+Outputs:
+  BackendExecutionRoleArn:
+    Value: !GetAtt BackendExecutionRole.Arn

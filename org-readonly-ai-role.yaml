@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Org-wide read-only role for AWS Cloud AI Agent
+
+Parameters:
+  BackendAccountId:
+    Type: String
+    Description: AWS Account ID where the Lambda backend runs
+
+Resources:
+  OrgReadOnlyAIRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: OrgReadOnlyAI
+
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${BackendAccountId}:role/BackendExecutionRole
+            Action:
+              - sts:AssumeRole
+
+      Policies:
+        - PolicyName: OrgReadOnlyAIPermissions
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - ec2:Describe*
+                  - ec2:Get*
+                  - s3:List*
+                  - s3:GetBucketLocation
+                  - iam:Get*
+                  - iam:List*
+                  - rds:Describe*
+                  - eks:List*
+                  - eks:Describe*
+                Resource: "*"
+
+Outputs:
+  OrgReadOnlyAIRoleArn:
+    Value: !GetAtt OrgReadOnlyAIRole.Arn
